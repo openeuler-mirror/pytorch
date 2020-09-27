@@ -1,0 +1,4 @@
+version_control: github
+src_repo: pytorch/pytorch
+tag_prefix: ^v
+separator: .
