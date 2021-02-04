@@ -1,0 +1,29 @@
+From 9fa24f75ca24761183ea2fe664744f2284007e3f Mon Sep 17 00:00:00 2001
+From: Zhipeng Xie <xiezhipeng1@huawei.com>
+Date: Wed, 3 Feb 2021 10:22:31 -0500
+Subject: [PATCH] disable SVE for v1.6.0 due to sleef build error.
+
+sleef build error due to SVE not fully supported, so
+disable it temporarily.
+
+Signed-off-by: Zhipeng Xie <xiezhipeng1@huawei.com>
+---
+ third_party/sleef/Configure.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third_party/sleef/Configure.cmake b/third_party/sleef/Configure.cmake
+index 25fc675e..02c364d2 100644
+--- a/third_party/sleef/Configure.cmake
++++ b/third_party/sleef/Configure.cmake
+@@ -545,7 +545,7 @@ endif()
+ 
+ # SVE
+ 
+-option(DISABLE_SVE "Disable SVE" OFF)
++option(DISABLE_SVE "Disable SVE" ON)
+ option(ENFORCE_SVE "Build fails if SVE is not supported by the compiler" OFF)
+ 
+ if(SLEEF_ARCH_AARCH64 AND NOT DISABLE_SVE)
+-- 
+2.27.0
+

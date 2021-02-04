@@ -1,14 +1,15 @@
 %global _empty_manifest_terminate_build 0
 Name:		pytorch
 Version:	1.6.0
-Release:	1
+Release:	2
 Summary:	Tensors and Dynamic neural networks in Python with strong GPU acceleration
 License:	BSD-3
 URL:		https://pytorch.org/
 #sh -x updateSource.sh
-Source0:	pytorch-1.6.0-include-submodules.tar.bz2
+Source0:	pytorch-%{version}-include-submodules.tar.bz2
 
 Patch0001:	0001-Fix-illegal-opcode-bug-in-caffe2-40584.patch
+Patch0002:	0002-disable-SVE-for-v1.6.0-due-to-sleef-build-error.patch
 
 Requires:	python3-future
 Requires:	python3-numpy
@@ -84,5 +85,8 @@ mv %{buildroot}/doclist.lst .
 %{_docdir}/*
 
 %changelog
+* Thu Feb 4 2021 Zhipeng Xie<xiezhipeng1@huawei.com> - 1.6.0-2
+- disable SVE to fix compile error in gcc 9
+
 * Sun Sep 27 2020 Zhipeng Xie<xiezhipeng1@huawei.com> - 1.6.0-1
 - Package init
