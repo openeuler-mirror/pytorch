@@ -1,7 +1,7 @@
 %global _empty_manifest_terminate_build 0
 Name:		pytorch
 Version:	1.6.0
-Release:	2
+Release:	3
 Summary:	Tensors and Dynamic neural networks in Python with strong GPU acceleration
 License:	BSD-3
 URL:		https://pytorch.org/
@@ -11,6 +11,7 @@ Source0:	pytorch-%{version}-include-submodules.tar.bz2
 Patch0001:	0001-Fix-illegal-opcode-bug-in-caffe2-40584.patch
 Patch0002:	0002-disable-SVE-for-v1.6.0-due-to-sleef-build-error.patch
 
+BuildRequires:  g++
 Requires:	python3-future
 Requires:	python3-numpy
 
@@ -85,6 +86,9 @@ mv %{buildroot}/doclist.lst .
 %{_docdir}/*
 
 %changelog
+* Mon Jun 28 2021 wulei <wulei80@huawei.com> - 1.6.0-3
+- fixes: error: the CXX compiler identification is unknown
+
 * Thu Feb 4 2021 Zhipeng Xie<xiezhipeng1@huawei.com> - 1.6.0-2
 - disable SVE to fix compile error in gcc 9
 
