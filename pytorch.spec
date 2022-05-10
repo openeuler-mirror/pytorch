@@ -1,15 +1,15 @@
 %global _empty_manifest_terminate_build 0
 Name:		pytorch
-Version:	1.6.0
-Release:	3
+Version:	1.11.0
+Release:	1
 Summary:	Tensors and Dynamic neural networks in Python with strong GPU acceleration
 License:	BSD-3
 URL:		https://pytorch.org/
 #sh -x updateSource.sh
 Source0:	pytorch-%{version}-include-submodules.tar.bz2
 
-Patch0001:	0001-Fix-illegal-opcode-bug-in-caffe2-40584.patch
 Patch0002:	0002-disable-SVE-for-v1.6.0-due-to-sleef-build-error.patch
+Patch0003:      0003-Port-breakpad-to-riscv64.patch
 
 BuildRequires:  g++
 Requires:	python3-future
@@ -29,6 +29,8 @@ BuildRequires:	python3-setuptools
 BuildRequires:	python3-pyyaml
 BuildRequires:	cmake
 BuildRequires:	python3-numpy
+BuildRequires:  python3-pip
+BuildRequires:  python-typing-extensions
 
 %description -n python3-pytorch
 PyTorch is a Python package that provides two high-level features:
@@ -86,6 +88,9 @@ mv %{buildroot}/doclist.lst .
 %{_docdir}/*
 
 %changelog
+* Sat May 07 2022 yangjinghua <yjhdandan@163.com> - 1.11.0-1
+- update and add support to riscv64
+
 * Mon Jun 28 2021 wulei <wulei80@huawei.com> - 1.6.0-3
 - fixes: error: the CXX compiler identification is unknown
 

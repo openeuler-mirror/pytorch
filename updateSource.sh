@@ -1,6 +1,6 @@
 #!/bin/bash
 topdir=$(pwd)
-version=1.6.0
+version=1.11.0
 rm -rf pytorch-${version}
 git clone --recursive https://github.com/pytorch/pytorch pytorch-${version}
 cd pytorch-${version}
